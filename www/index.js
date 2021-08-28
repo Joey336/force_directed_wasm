@@ -1,3 +1,1 @@
-import * as wasm from "wasm-template-rust";
-
-wasm.greet();
+import * as wasm from "force_directed";

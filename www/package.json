@@ -25,13 +25,16 @@
   "license": "(MIT OR Apache-2.0)",
   "homepage": "https://github.com/sn99/wasm-template-rust/blob/master/README.md",
   "dependencies": {
-    "wasm-template-rust": "file:../pkg"
+    "force_directed": "file:../pkg"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.0",
     "hello-wasm-pack": "^0.1.0",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "@wasm-tool/wasm-pack-plugin": "1.0.1",
+    "text-encoding": "^0.7.0",
+    "html-webpack-plugin": "^3.2.0"
   }
 }
