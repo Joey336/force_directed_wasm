@@ -42,8 +42,8 @@ matrix:
         local-dir: docs
         keep-history: false
         branches:
-          only:
-            - main
+          except:
+            - gh-pages
 
     - name: Tests
       env: RUST_BACKTRACE=1
