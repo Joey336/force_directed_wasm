@@ -33,7 +33,7 @@ impl State for AppState {
 }
 
 #[wasm_bindgen(start)]
-pub fn main() -> Result<(), JsValue> {
+pub fn main_js() -> Result<(), JsValue> {
     let mut window = Window::new("Kiss3d: wasm example");
     window.set_background_color(1.0, 1.0, 1.0);
     let mut c = window.add_cube(0.1, 0.1, 0.1);
