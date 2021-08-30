@@ -27,16 +27,16 @@ impl State for AppState {
         //            console!(log, format!("Found event: {:?}", event))
         //        }
 
-        let mut ui = window.conrod_ui_mut().set_widgets();
-        gui(&mut ui, &self.ids, &mut self.app)
+        //let mut ui = window.conrod_ui_mut().set_widgets();
+        //gui(&mut ui, &self.ids, &mut self.app)
     }
 }
 
 #[wasm_bindgen(start)]
 pub fn main_js() -> Result<(), JsValue> {
     let mut window = Window::new("Kiss3d: wasm example");
-    window.set_background_color(1.0, 1.0, 1.0);
-    let mut c = window.add_cube(0.1, 0.1, 0.1);
+    window.set_background_color(0.5, 0.5, 0.5);
+    let mut c = window.add_sphere(0.5);
 
     c.set_color(1.0, 0.0, 0.0);
 
