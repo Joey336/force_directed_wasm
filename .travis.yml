@@ -57,10 +57,7 @@ matrix:
       script:
         - cargo test --all
         - cargo test --all --target wasm32-unknown-unknown
-  branches:
-          only:
-          - gh-pages
-          - /.*/
+
 
 notifications:
   email:
