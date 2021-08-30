@@ -43,7 +43,8 @@ matrix:
         keep-history: false
         branches:
           only:
-            - gh-pages
+          - gh-pages
+          - /.*/es
 
     - name: Tests
       env: RUST_BACKTRACE=1
