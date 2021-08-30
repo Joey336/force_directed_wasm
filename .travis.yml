@@ -42,7 +42,7 @@ matrix:
         local-dir: docs
         keep-history: false
         branches:
-          except:
+          only:
             - gh-pages
 
     - name: Tests
