@@ -41,7 +41,8 @@ matrix:
         github-token: $GITHUB_TOKEN
         local-dir: docs
         keep-history: false
-        
+        on:
+          branch: gh-pages
 
     - name: Tests
       env: RUST_BACKTRACE=1
