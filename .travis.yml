@@ -44,7 +44,7 @@ matrix:
         branches:
           only:
           - gh-pages
-          - /.*/es
+          - /.*/
 
     - name: Tests
       env: RUST_BACKTRACE=1
