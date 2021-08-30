@@ -42,7 +42,7 @@ matrix:
         local-dir: docs
         keep-history: false
         on:
-          branch: gh-pages
+          branch: main
 
     - name: Tests
       env: RUST_BACKTRACE=1
