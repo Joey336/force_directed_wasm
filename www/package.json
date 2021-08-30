@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
   "name": "force_directed_wasm",
   "version": "0.1.0",
   "description": "Force directed graph deployed with wasm rust",
+=======
+  "name": "wasm-template-rust",
+  "version": "0.1.0",
+  "description": "A template for no npm wasm-rust and github hosting",
+>>>>>>> ebf1b372f3ae9fb8b4c4d58e2828670460b7e5de
   "main": "index.js",
   "bin": {
     "create-wasm-app": ".bin/create-wasm-app.js"
@@ -12,7 +18,11 @@
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "git+https://github.com/Joey336/force_directed_wasm.git"
+=======
+    "url": "git+https://github.com/sn99/wasm-template-rust.git"
+>>>>>>> ebf1b372f3ae9fb8b4c4d58e2828670460b7e5de
   },
   "keywords": [
     "webassembly",
@@ -21,9 +31,15 @@
     "webpack",
     "template"
   ],
+<<<<<<< HEAD
   "author": "joey336 <joseph_buono@uri.edu>",
   "license": "(MIT OR Apache-2.0)",
   "homepage": "https://joey336.github.io/force_directed_wasm",
+=======
+  "author": "sn99 <siddharthn.099@gmail.com>",
+  "license": "(MIT OR Apache-2.0)",
+  "homepage": "https://github.com/sn99/wasm-template-rust/blob/master/README.md",
+>>>>>>> ebf1b372f3ae9fb8b4c4d58e2828670460b7e5de
   "dependencies": {
     "force_directed": "file:../pkg"
   },

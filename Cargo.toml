@@ -15,9 +15,16 @@ wasm-bindgen = { version = "0.2.58", features = ["serde-serialize"] }
 console_error_panic_hook = { version = "0.1.6", optional = true }
 wee_alloc = { version = "0.4.5", optional = true }
 js-sys = "0.3.35"
+<<<<<<< HEAD
 nalgebra = "0.26"
 kiss3d = { version = "0.29", features = [ "conrod" ] }
 rand = { version = "0.7.3" }
+=======
+nalgebra = "0.29"
+kiss3d = { version = "0.31", features = [ "conrod" ] }
+rand = { version = "0.8.4" }
+getrandom = { version = "0.2", features = ["js"] }
+>>>>>>> ebf1b372f3ae9fb8b4c4d58e2828670460b7e5de
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.8"

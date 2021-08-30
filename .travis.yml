@@ -56,7 +56,15 @@ matrix:
         - cargo test --all
         - cargo test --all --target wasm32-unknown-unknown
 
+<<<<<<< HEAD
 
+=======
+branches:
+  only:
+      - gh-pages
+      - /.*/
+      
+>>>>>>> ebf1b372f3ae9fb8b4c4d58e2828670460b7e5de
 notifications:
   email:
     on_success: never
