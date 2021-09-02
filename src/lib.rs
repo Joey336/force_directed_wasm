@@ -1,7 +1,9 @@
 #[macro_use]
 extern crate kiss3d;
 extern crate nalgebra as na;
+mod dot_reader;
 
+use std::fs::File;
 use kiss3d::conrod::color::{Color, Colorable};
 use kiss3d::conrod::position::{Positionable, Sizeable};
 use kiss3d::conrod::widget::{button::Style, Button, Text, Widget};
@@ -15,10 +17,7 @@ use kiss3d::window::{State, Window};
 use na::{UnitQuaternion, Vector3};
 
 struct AppState {
-    c: SceneNode,
-    rot: UnitQuaternion<f32>,
-    ids: Ids,
-    app: DemoApp,
+    test: i32
 }
 
 impl State for AppState {
@@ -37,19 +36,20 @@ pub fn main_js() -> Result<(), JsValue> {
     let mut window = Window::new("Kiss3d: wasm example");
     window.set_background_color(0.5, 0.5, 0.5);
     let mut c = window.add_sphere(0.5);
-
+    //let (nodes, edges) = dot_reader::read_dot("force_directed_wasm/dot_files/arrhythmia/cluster_cardinality_optimal_0.dot");
+    //let file = File::open("force_directed_wasm/dot_files/arrhythmia/cluster_cardinality_optimal_0.dot").expect("Unable to open file");
     c.set_color(1.0, 0.0, 0.0);
 
     window.set_light(Light::StickToCamera);
 
-    let rot = UnitQuaternion::from_axis_angle(&Vector3::y_axis(), 0.014);
+    //let rot = UnitQuaternion::from_axis_angle(&Vector3::y_axis(), 0.014);
 
     // Generate the widget identifiers.
-    let ids = Ids::new(window.conrod_ui_mut().widget_id_generator());
-    let app = DemoApp::new();
-    window.conrod_ui_mut().theme = theme();
+    //let ids = Ids::new(window.conrod_ui_mut().widget_id_generator());
+    //let app = DemoApp::new();
+    //window.conrod_ui_mut().theme = theme();
 
-    let state = AppState { c, rot, ids, app };
+    let state = AppState { test: 50 };
 
     window.render_loop(state);
     Ok(())
