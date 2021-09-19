@@ -47,17 +47,15 @@ impl State for AppState {
 #[wasm_bindgen()]
 pub fn main_js(message: &str){
 
-
     let mut window = Window::new("Kiss3d: wasm example");
     window.set_background_color(0.5, 0.5, 0.5);
     window.set_light(Light::StickToCamera);
     
+    //Do not call read_dot when webpage is first loaded(no files input)
     if message != "0.0"{
         let (nodes_data, edges_data) = dot_reader::read_dot(message);
-        let mut d = window.add_sphere(50.);
-        let mut nodes_hashmap = create_nodes(nodes_data, &mut window);
+        let nodes_hashmap = create_nodes(nodes_data, &mut window);
         let springs_vector = create_springs(&edges_data);
-
         let state = AppState{
             spring_vector: springs_vector,
             nodes_hashmap: nodes_hashmap,
@@ -65,7 +63,6 @@ pub fn main_js(message: &str){
         };
 
         window.render_loop(state);
-
     }
    
 }
@@ -90,7 +87,8 @@ fn draw_edges(nodes_hashmap: &HashMap<String, node::Node>, edges_data: &HashMap<
 
 //creates spring for each edge in graph
 fn create_springs(edges_data: &HashMap<String, (String, String, f32)>) -> Vec<spring::Spring>{
-    let spring_multiplier = 5.;
+    //Responsible for spread of graph (ideal multiplier different depending on data file selected)
+    let spring_multiplier = 3.;
 
     let mut return_vec: Vec<spring::Spring> = Vec::new();
 
@@ -108,14 +106,14 @@ fn create_nodes(node_data: HashMap<String, dot_reader::NodeData>, window: &mut W
     //initialize x, y, z at random positions
     let mut return_hashmap = HashMap::new();    
     
-    let mut x = 1.;
-    let y = 2.;
-    let z = 3.;
+    
     for (_key, value) in &node_data{
         //randomly generate initial x,y,z position of node
+        let mut rng = thread_rng();
+        let x = rng.gen_range(0., 100.0);
+        let y = rng.gen_range(0., 100.0);
+        let z = rng.gen_range(0., 100.0);
         
-        x+=1.;
-
         let mut sphere = window.add_sphere(1.);
 
         //RBG scaled to float between 0.0 - 1.0 (kiss3d RGB parameters are 0.0 - 1.0)
