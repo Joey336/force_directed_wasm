@@ -1,6 +1,4 @@
 use std::collections::HashMap;
-use std::io::{BufRead, BufReader};
-use wasm_bindgen::prelude::*;
 extern crate console_error_panic_hook;
 
 // A macro to provide `println!(..)`-style syntax for `console.log` logging.
@@ -45,6 +43,7 @@ pub fn read_dot(
   
      for line in dot_file_string.lines(){
         let line_string = line.to_string();
+
 
         if is_node(&line_string) {
             // reading the nodes from the dot file

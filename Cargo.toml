@@ -19,6 +19,7 @@ nalgebra = "0.26"
 kiss3d = { version = "0.29", features = [ "conrod" ] }
 rand = { version = "0.7.3" }
 stdweb = "0.4.20"
+getrandom = { version = "0.2", features = ["js"] }
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.8"
