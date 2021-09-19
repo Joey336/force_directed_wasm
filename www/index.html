@@ -12,12 +12,18 @@
 				overflow: hidden;
 		}
     </style>
+	<script src="fileReader.js"></script>
 </head>
-<body>
+<body onload="init()">
+	
 
-<script src="./bootstrap.js"></script>
-<noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
-<canvas oncontextmenu="return false;" id="canvas"></canvas>
-<canvas id="canvas"></canvas>
+	<input id="fileInput" type="file" name="file" />
+    <pre id="fileContent"></pre>
+
+	<script src="./bootstrap.js"></script>
+	<noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+	<canvas oncontextmenu="return false;" id="canvas"></canvas>
+	<canvas id="canvas"></canvas>
+
 </body>
 </html>
