@@ -9,8 +9,6 @@ function init(){
     reader.readAsText(event.target.files[0])
   }
   
-  function handleFileLoad(event){
+  function handleFileLoad(event){  
     document.getElementById('fileContent').textContent = event.target.result;
-    return document.getElementById('fileContent').textContent;
-    
   }

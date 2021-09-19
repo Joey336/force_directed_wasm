@@ -4,6 +4,12 @@
 import("./index.js").catch(e => console.error("Error importing `index.js`:", e));
 const rust = import('../pkg/force_directed');
 
-rust.then(m => console.log(m.test()))
-.catch(console.error);
+
+
+
+rust.then(m => {
+    document.getElementById('fileContent').addEventListener("DOMSubtreeModified", e=>
+    m.test(document.getElementById('fileContent').textContent));
+    m.test("HELLO JS")
+});
 

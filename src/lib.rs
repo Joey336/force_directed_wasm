@@ -43,8 +43,8 @@ extern "C" {
 }
 
 #[wasm_bindgen]
-pub fn test() -> i32{
-    500
+pub fn test(message: &str){
+    log(message);
 }
 
 #[wasm_bindgen(start)]
