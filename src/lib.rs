@@ -1,22 +1,15 @@
-#[macro_use]
 extern crate kiss3d;
 extern crate nalgebra as na;
 extern crate stdweb;
 mod dot_reader;
 
-use std::fs::File;
-use kiss3d::conrod::color::{Color, Colorable};
-use kiss3d::conrod::position::{Positionable, Sizeable};
-use kiss3d::conrod::widget::{button::Style, Button, Text, Widget};
-use kiss3d::conrod::Labelable;
 use wasm_bindgen::prelude::*;
-use stdweb::{js};
-
-use kiss3d::conrod;
 use kiss3d::light::Light;
-use kiss3d::scene::SceneNode;
 use kiss3d::window::{State, Window};
-use na::{UnitQuaternion, Vector3};
+
+extern crate web_sys;
+
+
 
 struct AppState {
     test: i32
@@ -35,23 +28,20 @@ impl State for AppState {
 
 
 
-// lifted from the `console_log` example
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_namespace = console)]
-    fn log(s: &str);
-}
 
-#[wasm_bindgen]
-pub fn test(message: &str){
-    log(message);
-}
 
-#[wasm_bindgen(start)]
-pub fn main_js(){
-    
+#[wasm_bindgen()]
+pub fn main_js(message: &str){
+
+
     let mut window = Window::new("Kiss3d: wasm example");
     window.set_background_color(0.5, 0.5, 0.5);
+    if message != "0.0"{
+        let (node_data, edge_data) = dot_reader::read_dot(message);
+        let mut d = window.add_sphere(50.);
+        log!("{:?} \n\n\n{:?}",node_data, edge_data);
+    }
+
     let mut c = window.add_sphere(0.5);
     c.set_color(1.0, 5.0, 0.0);
 
@@ -64,3 +54,4 @@ pub fn main_js(){
     window.render_loop(state);
    
 }
+

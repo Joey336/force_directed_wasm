@@ -1,6 +1,15 @@
 use std::collections::HashMap;
-use std::fs::File;
 use std::io::{BufRead, BufReader};
+use wasm_bindgen::prelude::*;
+extern crate console_error_panic_hook;
+
+// A macro to provide `println!(..)`-style syntax for `console.log` logging.
+#[macro_export]
+macro_rules! log {
+    ( $( $t:tt )* ) => {
+        web_sys::console::log_1(&format!( $( $t )* ).into());
+    }
+}
 
 #[derive(Clone, Debug)]
 pub struct Color{
@@ -20,28 +29,31 @@ pub struct NodeData {
     degree: i32,      // the degree of the node, or amount of connected edges
 }
 
+
 // reading the dot file and returning a drawable force graph. Takes in the path
 // of the dot file and the drawing scale of the graph
 pub fn read_dot(
     dot_file: &str
 ) -> (HashMap<String, NodeData>, HashMap<String, (String, String, f32)>) {
-    let file = File::open(dot_file).unwrap();
-    let reader = BufReader::new(file);
+   
+    console_error_panic_hook::set_once();
 
     let mut uploaded_nodes: HashMap<String, NodeData> = HashMap::new();
     let mut uploaded_edges: HashMap<String, (String, String, f32)> = HashMap::new();
+    let dot_file_string = dot_file.to_string();
+    
+  
+     for line in dot_file_string.lines(){
+        let line_string = line.to_string();
 
-    for (_, line) in reader.lines().enumerate() {
-        let line = line.unwrap();
-
-        if is_node(&line) {
+        if is_node(&line_string) {
             // reading the nodes from the dot file
-            let new_node_data = get_node_data(line);
+            let new_node_data = get_node_data(line_string);
             let _node_data = new_node_data.clone();
             uploaded_nodes.insert(_node_data.clone().name.to_string(), _node_data);
-        } else if is_edge(&line) {
+        } else if is_edge(&line_string) {
             // reading the edges from the dot file
-            let (node_1, node_2, label_num) = get_edge_data(line);
+            let (node_1, node_2, label_num) = get_edge_data(line_string);
 
             // incrementing the degree of the nodes each edge connects
             uploaded_nodes.get_mut(&node_1).unwrap().degree += 1;
@@ -51,7 +63,7 @@ pub fn read_dot(
             uploaded_edges.insert(edge_index, (node_1, node_2, label_num));
         }
     }
-
+ 
     (uploaded_nodes, uploaded_edges)
 }
 
