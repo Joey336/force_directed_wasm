@@ -42,7 +42,10 @@ extern "C" {
     fn log(s: &str);
 }
 
-
+#[wasm_bindgen]
+pub fn test() -> i32{
+    500
+}
 
 #[wasm_bindgen(start)]
 pub fn main_js(){

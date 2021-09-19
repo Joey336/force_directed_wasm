@@ -1,6 +1,6 @@
+
 function init(){
     document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
-   
   }
   
   function handleFileSelect(event){
@@ -12,4 +12,5 @@ function init(){
   function handleFileLoad(event){
     document.getElementById('fileContent').textContent = event.target.result;
     return document.getElementById('fileContent').textContent;
+    
   }
