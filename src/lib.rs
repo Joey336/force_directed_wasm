@@ -61,7 +61,7 @@ pub fn main_js(message: &str){
             nodes_hashmap: nodes_hashmap,
             edges_data: edges_data
         };
-
+        window.set_framerate_limit(Some(10));
         window.render_loop(state);
     }
    
