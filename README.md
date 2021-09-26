@@ -7,6 +7,7 @@
 ## About The Project
 
 This project was built using the [Kiss3d](https://github.com/sebcrozet/kiss3d) graphics library for Rust.
+Project compiled with WebAssembly and utilizes Wasm-Bindgen to allow JavaScript and Rust to interact.
 
 TravisCI is utilized for automated deployment of new pushes to the gh-pages branch of the repository
 
